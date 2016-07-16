@@ -1,0 +1,3 @@
+rootProject.name = 'xue8'
+
+include ':app'
