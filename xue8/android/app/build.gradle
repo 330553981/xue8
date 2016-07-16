@@ -137,3 +137,21 @@ task copyDownloadableDepsToLibs(type: Copy) {
   from configurations.compile
   into 'libs'
 }
+
+final def TARGET_BUNDLE_DIR = 'app/src/main/assets/'
+final def TARGET_BUNDLE_FILE = 'ReactNativeDevBundle.js'
+final def DOWNLOAD_URL = 'http://localhost:8081/index.android.bundle?platform=android'
+
+task downloadJSBundle << {
+    def dir = new File(TARGET_BUNDLE_DIR)
+    if (!dir.exists()) {
+        dir.mkdirs()
+    }
+    def f = new File(TARGET_BUNDLE_DIR + TARGET_BUNDLE_FILE)
+    if (f.exists()) {
+        f.delete()
+    }
+    new URL(DOWNLOAD_URL).withInputStream{ i -> f.withOutputStream{ it << i }}
+}
+// 保证每次编译之前，先下载 JS 文件
+preBuild.dependsOn downloadJSBundle

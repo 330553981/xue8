@@ -6,7 +6,14 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "immutable": "^3.8.1",
     "react": "15.2.1",
-    "react-native": "0.29.1"
+    "react-native": "0.29.1",
+    "react-redux": "^4.4.5", // 是Redux的react绑定库
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0" // 是为了实现异步Action Creator引入的。
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.3.1"
   }
 }

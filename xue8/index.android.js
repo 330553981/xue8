@@ -3,10 +3,11 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
 
 class xue8 extends Component {
+
   render() {
     return (
       <View style={styles.container}>
